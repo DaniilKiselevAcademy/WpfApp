@@ -5,8 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
 
+    <Window.Resources>
+        <Style x:Key="MainBtns">
+            <Setter Property="Button.Margin" Value="20" />
+            <Setter Property="Button.Padding" Value="10" />
+            
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid x:Name="studentsTable" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+        <StackPanel Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <Button x:Name="addBtn" Style="{StaticResource MainBtns}" Click="addBtn_Click">Добавить</Button>
+            <Button x:Name="editBtn" Style="{StaticResource MainBtns}" Click="editBtn_Click">Редактировать</Button>
+            <Button x:Name="delBtn" Style="{StaticResource MainBtns}" Click="delBtn_Click">Удалить</Button>
+        </StackPanel>
     </Grid>
 </Window>

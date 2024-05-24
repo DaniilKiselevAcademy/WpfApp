@@ -4,13 +4,16 @@ namespace WpfApp
 {
     class Context : DbContext
     {
+        // Привязываю таблицы которые будут в базе данных
         public DbSet<Student> Students { get; set; }
 
+        // Настраиваю соединение с базой данных
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite("Data Source=test.db");
         }
 
+        // Задаю тестовые данные
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Student>().HasData(
